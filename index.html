@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Convite de Formatura — Dr. Augusto Machado</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inria+Serif:ital,wght@0,300;0,400;0,700;1,400&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    /* Paleta Bordô/Vinho e Dourado */
+    --bg-main: #3f0c1a; /* Vermelho Bordô base */
+    --bg-dark: #2a0710; /* Tom mais escuro para o gradiente de fundo */
+    --gold: #c8a44c;
+    --gold-light: #e8cf8a;
+    --ivory: #fcf6eb; /* Branco mais suave para leitura */
+    --muted: #d5c3b5;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  
+  /* Fundo Uniforme e Contínuo para todo o corpo */
+  body {
+    margin: 0;
+    /* Gradiente sutil que percorre a página toda, sem quebras */
+    background: linear-gradient(180deg, var(--bg-main) 0%, var(--bg-dark) 100%);
+    color: var(--ivory);
+    font-family: 'Sora', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    min-height: 100vh;
+  }
+  
+  h1, h2, h3 { font-family: 'Inria Serif', serif; margin: 0; font-weight: 400; }
+  a { color: inherit; text-decoration: none; }
+
+  /* Fontes Personalizadas */
+  .font-script {
+    font-family: 'Great Vibes', cursive;
+    color: var(--gold-light);
+    font-weight: 400;
+  }
+
+  /* ================= LAYOUT GERAL FLUIDO ================= */
+  .section {
+    padding: clamp(60px, 10vw, 120px) clamp(24px, 8vw, 40px);
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  /* Divisor de seções bem sutil, sem quebrar a fluidez */
+  .arc-divider { 
+      display: flex; 
+      justify-content: center; 
+      padding: 0;
+      opacity: 0.4; /* Mais transparente para ser suave */
+  }
+  .arc-divider svg { width: 140px; height: 28px; display: block; }
+
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease, transform 0.8s ease; }
+  .reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+  /* ================= HERO (CAPA) ================= */
+  .hero {
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
+    padding: 0; 
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* Gradiente na base da capa para mesclar com o resto da página suavemente */
+  .hero-gradient {
+    position: absolute;
+    bottom: -2px; /* Evita linha dura */
+    left: 0;
+    right: 0;
+    height: 30vh;
+    z-index: 15;
+    background: linear-gradient(0deg, var(--bg-main) 0%, transparent 100%);
+    pointer-events: none;
+  }
+
+  .hero-cover {
+    width: 100%;
+    max-width: 800px; 
+    position: relative;
+    z-index: 10;
+  }
+  
+  .hero-cover img {
+    width: 100%;
+    height: auto;
+    display: block;
+    /* Removida a sombra pesada para manter o aspecto fluido */
+  }
+  
+  /* ================= DENTES VAZADOS ANIMADOS ================= */
+  .particles-container { position: absolute; inset: 0; pointer-events: none; z-index: 2; overflow: hidden; }
+  .tooth-particle {
+    position: absolute; 
+    color: var(--gold-light); 
+    opacity: 0;
+    animation: floatTooth infinite linear;
+  }
+  .tooth-particle svg { 
+    width: 100%; 
+    height: 100%; 
+    fill: none; 
+    stroke: currentColor; 
+    stroke-width: 1.2; 
+    stroke-linecap: round; 
+    stroke-linejoin: round; 
+  }
+  
+  .tooth-particle:nth-child(1) { width: 35px; height: 35px; top: 80%; left: 10%; animation-duration: 16s; animation-delay: 0s; }
+  .tooth-particle:nth-child(2) { width: 25px; height: 25px; top: 90%; left: 85%; animation-duration: 22s; animation-delay: 3s; }
+  .tooth-particle:nth-child(3) { width: 40px; height: 40px; top: 75%; left: 50%; animation-duration: 18s; animation-delay: 6s; }
+  .tooth-particle:nth-child(4) { width: 22px; height: 22px; top: 85%; left: 30%; animation-duration: 14s; animation-delay: 8s; }
+  .tooth-particle:nth-child(5) { width: 45px; height: 45px; top: 95%; left: 70%; animation-duration: 24s; animation-delay: 1s; }
+
+  @keyframes floatTooth {
+    0% { transform: translateY(0) rotate(-10deg); opacity: 0; }
+    10% { opacity: 0.12; } 
+    90% { opacity: 0.12; }
+    100% { transform: translateY(-500px) rotate(45deg); opacity: 0; }
+  }
+  
+  .hero-content {
+    position: relative;
+    z-index: 20; /* Fica acima do gradiente de transição */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: -30px; /* Puxa para cima para mesclar com a foto */
+  }
+  
+  .date-pill {
+    color: var(--gold-light);
+    font-size: 16px;
+    letter-spacing: .1em;
+    margin-bottom: 40px;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-family: 'Inria Serif', serif;
+  }
+  
+  .scroll-cue {
+    font-size: 10px;
+    letter-spacing: .25em;
+    text-transform: uppercase;
+    color: rgba(232, 207, 138, 0.6);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+  .scroll-cue span {
+    width: 1px; height: 40px; background: linear-gradient(var(--gold), transparent);
+    animation: scrollPulse 1.5s ease-in-out infinite;
+  }
+  @keyframes scrollPulse { 
+    0% {transform: scaleY(0); transform-origin: top; opacity:0;} 
+    50% {transform: scaleY(1); opacity:1;} 
+    100% {transform: scaleY(1); transform-origin: bottom; opacity:0;} 
+  }
+
+  .hero-anim { opacity: 0; animation: heroFadeInUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
+  .delay-1 { animation-delay: 0.2s; }
+  .delay-4 { animation-delay: 0.7s; }
+  .delay-5 { animation-delay: 0.9s; }
+
+  @keyframes heroFadeInUp {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ================= BANNER & CITAÇÃO (SEM CAIXAS) ================= */
+  .banner {
+    position: relative;
+    width: 100%;
+    height: clamp(280px, 50vw, 420px);
+    overflow: hidden;
+  }
+  .banner img {
+    width: 100%; height: 100%; object-fit: cover; object-position: center 25%; filter: contrast(1.05) saturate(0.98); display: block;
+  }
+  
+  /* Gradiente superior e inferior para o banner se fundir totalmente no corpo do site */
+  .banner::before {
+      content: ""; position: absolute; top: 0; left: 0; right: 0; height: 15%;
+      background: linear-gradient(180deg, var(--bg-main) 0%, transparent 100%);
+      z-index: 5;
+  }
+  .banner::after {
+    content: ""; position: absolute; bottom: 0; left: 0; right: 0; height: 60%;
+    background: linear-gradient(0deg, var(--bg-main) 0%, rgba(63,12,26,0.3) 100%);
+    z-index: 5;
+  }
+  
+  .banner-caption {
+    position: absolute; left: 0; right: 0; bottom: 0; padding: 26px clamp(20px,6vw,40px) 40px; text-align: center; z-index: 10;
+  }
+  .banner-caption p {
+    font-family: 'Inria Serif', serif; font-style: italic; font-size: clamp(16px, 2.6vw, 22px); color: var(--ivory); max-width: 38ch; margin: 0 auto; line-height: 1.6; text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+  }
+
+  .section-head { text-align: center; margin-bottom: 60px; }
+  .section-head h2 { font-size: clamp(32px, 6vw, 42px); color: var(--gold-light); margin-bottom: 16px; }
+  .section-head p { color: var(--muted); font-size: 16px; max-width: 48ch; margin-inline: auto; line-height: 1.6; }
+
+  /* Citação estilo editorial, sem fundo ou bordas */
+  .quote-block {
+      text-align: center;
+      margin-bottom: 70px;
+      padding: 0 20px;
+  }
+  .quote-photo-circle { 
+      width: 90px; height: 90px; border-radius: 50%; overflow: hidden; 
+      margin: 0 auto 20px;
+      box-shadow: 0 0 0 2px var(--gold-light), 0 10px 20px rgba(0,0,0,0.3);
+  }
+  .quote-photo-circle img { width: 100%; height: 100%; object-fit: cover; object-position: center 22%; }
+  .quote-block p { 
+      font-family: 'Inria Serif', serif; font-style: italic; color: var(--ivory); 
+      font-size: clamp(18px, 3vw, 24px); line-height: 1.5; margin: 0;
+  }
+
+  /* ================= TIMELINE (PROGRAMAÇÃO) - LIMPA E FLUIDA ================= */
+  .timeline { 
+      display: flex; 
+      flex-direction: column; 
+      gap: 50px; /* Mais espaço entre os itens para compensar a falta de caixas */
+      position: relative;
+  }
+  
+  /* Linha vertical central unificadora */
+  .timeline::before {
+      content: '';
+      position: absolute;
+      top: 10px;
+      bottom: 10px;
+      left: 23px; /* Centralizado com a bolinha da data */
+      width: 1px;
+      background: linear-gradient(180deg, transparent, var(--gold-light), var(--gold-light), transparent);
+      opacity: 0.3;
+  }
+
+  .tl-item { display: grid; grid-template-columns: 48px 1fr; gap: 24px; align-items: start; position: relative; }
+  
+  /* Data agora é apenas o número flutuante limpo */
+  .tl-badge {
+    width: 48px; height: 48px; border-radius: 50%;
+    background: transparent; display: flex; align-items: center; justify-content: center;
+    font-size: 32px; color: var(--gold-light); flex-shrink: 0; font-family: 'Inria Serif', serif;
+    position: relative; z-index: 2;
+    /* Ponto na linha */
+    text-shadow: 0 0 10px var(--bg-main);
+  }
+  
+  .tl-content { padding-top: 8px; }
+  .tl-date { display: block; font-size: 12px; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); font-weight: 400; margin-bottom: 8px; }
+  .tl-content h3 { font-size: 24px; color: var(--ivory); margin-bottom: 12px; }
+  
+  .tl-meta-wrap { display: flex; flex-direction: column; gap: 6px; margin-bottom: 20px;}
+  .tl-meta { font-size: 15px; color: var(--muted); display: flex; align-items: center; gap: 8px;}
+  .tl-meta b { color: var(--ivory); font-weight: 400; }
+  
+  .tl-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+
+  /* Botões mais sutis (apenas texto com underline ou contorno leve) */
+  .btn-text {
+    font-size: 13px; font-weight: 500; text-transform: uppercase; letter-spacing: .05em;
+    color: var(--gold-light); cursor: pointer; border: none; background: transparent;
+    padding: 0; display: inline-flex; align-items: center; gap: 6px;
+    border-bottom: 1px solid rgba(232, 207, 138, 0.3); padding-bottom: 2px;
+    font-family: 'Sora', sans-serif;
+  }
+  .btn-text:hover { border-bottom-color: var(--gold-light); }
+
+  /* ================= DEDICATÓRIA - EDITORIAL ================= */
+  .dedic-section { text-align: center; }
+  
+  .dedic-photo { 
+      width: 100%; max-width: 280px; margin: 0 auto 40px; 
+      border-radius: 4px; /* Cantos levemente arredondados, sem borda grossa */
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4); 
+  }
+  .dedic-photo img { width: 100%; display: block; border-radius: 4px;}
+
+  .dedic-text {
+      text-align: left;
+      max-width: 600px;
+      margin: 0 auto;
+  }
+  
+  /* Aspas grandes e elegantes para abrir o texto */
+  .dedic-text::before {
+      content: "“";
+      display: block;
+      font-family: 'Inria Serif', serif;
+      font-size: 80px;
+      color: var(--gold);
+      opacity: 0.3;
+      line-height: 0;
+      margin-top: 40px;
+      margin-bottom: 20px;
+      text-align: center;
+  }
+
+  .dedic-text p { 
+      font-family: 'Inria Serif', serif; font-size: clamp(16px, 2.5vw, 18px); 
+      line-height: 1.8; color: var(--ivory); margin: 0 0 24px; text-align: justify; 
+  }
+  .dedic-text p b { color: var(--gold-light); font-weight: 400; }
+  .dedic-sign { 
+      text-align: right; font-size: 36px; color: var(--gold-light); 
+      margin-top: 50px; margin-bottom: 20px;
+  }
+
+  /* ================= RSVP ================= */
+  .rsvp-container {
+      text-align: center;
+      max-width: 500px;
+      margin: 0 auto;
+  }
+  
+  .rsvp-text { color: var(--muted); margin-bottom: 40px; line-height: 1.6; font-size: 16px;}
+  
+  .btn-whatsapp-large {
+    display: inline-flex; align-items: center; justify-content: center; gap: 12px; width: 100%;
+    background: #25D366; color: #fff; font-weight: 600; font-size: 16px;
+    padding: 18px 24px; border-radius: 4px; text-decoration: none; 
+    box-shadow: 0 8px 20px rgba(37, 211, 102, 0.2); 
+  }
+  
+  /* Foto Final mesclada com o fundo */
+  .final-image {
+      width: 100%;
+      height: 60vh;
+      margin-top: 60px;
+      background-image: url('WhatsApp%20Image%202026-06-20%20at%2012.42.40%20(4)_2.jpeg');
+      background-size: cover;
+      background-position: top center;
+      position: relative;
+      /* Mascara gradiente para a foto desaparecer nas pontas */
+      -webkit-mask-image: linear-gradient(to top, transparent 5%, black 40%, black 80%, transparent 100%);
+      mask-image: linear-gradient(to top, transparent 5%, black 40%, black 80%, transparent 100%);
+  }
+
+  footer { text-align: center; padding: 20px 20px 60px; color: rgba(213, 195, 181, 0.5); font-size: 12px; letter-spacing: .05em; text-transform: uppercase;}
+  footer .heart { color: var(--gold); }
+
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <!-- Transição na base da capa -->
+  <div class="hero-gradient"></div>
+
+  <!-- Dentes Vazados Animados -->
+  <div class="particles-container">
+    <div class="tooth-particle">
+        <svg viewBox="0 0 24 24"><path d="M15.43,2.68C14.06,2.68,12.92,3.61,12,4.82C11.08,3.61,9.94,2.68,8.57,2.68C6.05,2.68,4,4.73,4,7.25C4,9.6,5.32,11.6,7.38,12.5L8,19c0,1.1 0.9,2 2,2s2-0.9 2-2v-3h0v3c0,1.1 0.9,2 2,2s2-0.9 2-2l0.62-6.5C18.68,11.6,20,9.6,20,7.25C20,4.73,17.95,2.68,15.43,2.68z"/></svg>
+    </div>
+    <div class="tooth-particle">
+        <svg viewBox="0 0 24 24"><path d="M15.43,2.68C14.06,2.68,12.92,3.61,12,4.82C11.08,3.61,9.94,2.68,8.57,2.68C6.05,2.68,4,4.73,4,7.25C4,9.6,5.32,11.6,7.38,12.5L8,19c0,1.1 0.9,2 2,2s2-0.9 2-2v-3h0v3c0,1.1 0.9,2 2,2s2-0.9 2-2l0.62-6.5C18.68,11.6,20,9.6,20,7.25C20,4.73,17.95,2.68,15.43,2.68z"/></svg>
+    </div>
+    <div class="tooth-particle">
+        <svg viewBox="0 0 24 24"><path d="M15.43,2.68C14.06,2.68,12.92,3.61,12,4.82C11.08,3.61,9.94,2.68,8.57,2.68C6.05,2.68,4,4.73,4,7.25C4,9.6,5.32,11.6,7.38,12.5L8,19c0,1.1 0.9,2 2,2s2-0.9 2-2v-3h0v3c0,1.1 0.9,2 2,2s2-0.9 2-2l0.62-6.5C18.68,11.6,20,9.6,20,7.25C20,4.73,17.95,2.68,15.43,2.68z"/></svg>
+    </div>
+    <div class="tooth-particle">
+        <svg viewBox="0 0 24 24"><path d="M15.43,2.68C14.06,2.68,12.92,3.61,12,4.82C11.08,3.61,9.94,2.68,8.57,2.68C6.05,2.68,4,4.73,4,7.25C4,9.6,5.32,11.6,7.38,12.5L8,19c0,1.1 0.9,2 2,2s2-0.9 2-2v-3h0v3c0,1.1 0.9,2 2,2s2-0.9 2-2l0.62-6.5C18.68,11.6,20,9.6,20,7.25C20,4.73,17.95,2.68,15.43,2.68z"/></svg>
+    </div>
+  </div>
+
+  <!-- Capa Oficial -->
+  <div class="hero-cover hero-anim delay-1">
+    <img src="Branco%20Minimalista%20Convite%20Especial%20Post%20para%20Instagram.png" alt="Convite Formatura Augusto Machado">
+  </div>
+
+  <div class="hero-content">
+    <div class="date-pill hero-anim delay-4">21 a 24 de Julho · 2026</div>
+    <div class="scroll-cue hero-anim delay-5"><span></span>deslize para ver</div>
+  </div>
+</section>
+
+<!-- Banner Contínuo -->
+<div class="banner reveal">
+  <img src="WhatsApp%20Image%202026-06-20%20at%2012.42.40%20(1).jpeg" alt="Dr. Augusto no consultório">
+  <div class="banner-caption">
+    <p>Cinco anos de estudo, disciplina e fé se transformam, agora, em uma conquista para celebrar ao lado de quem sempre esteve por perto.</p>
+  </div>
+</div>
+
+<section class="section" id="programacao">
+  <!-- Citação Fluida -->
+  <div class="quote-block reveal">
+    <div class="quote-photo-circle">
+        <img src="WhatsApp%20Image%202026-06-20%20at%2012.42.40%20(2)%20-%20Copia_2.jpeg" alt="Atendimento Odontológico">
+    </div>
+    <p>"Cada conquista carrega a disciplina de quem não desiste e a fé de quem nunca caminhou sozinho."</p>
+  </div>
+
+  <div class="section-head reveal">
+    <h2 class="font-script" style="font-size: 52px; text-transform: none; letter-spacing: 0;">As Solenidades</h2>
+    <p>Quatro dias para celebrar cinco anos de dedicação. Marque em sua agenda os momentos dessa conquista.</p>
+  </div>
+
+  <!-- Linha do Tempo Unificada -->
+  <div class="timeline">
+
+    <div class="tl-item reveal">
+      <div class="tl-badge">21</div>
+      <div class="tl-content">
+        <span class="tl-date">Terça-feira</span>
+        <h3>Colação de Grau Festiva</h3>
+        <div class="tl-meta-wrap">
+            <span class="tl-meta">🕗 <b>20:00</b></span>
+            <span class="tl-meta">📍 <b>Mansão Bliss</b></span>
+        </div>
+        <div class="tl-actions">
+          <a class="btn-text" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Mansa%CC%83o%20Bliss%2C%20Teresina%2C%20PI">Ver Localização no Mapa</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item reveal">
+      <div class="tl-badge">22</div>
+      <div class="tl-content">
+        <span class="tl-date">Quarta-feira</span>
+        <h3>Missa em Ação de Graças</h3>
+        <div class="tl-meta-wrap">
+            <span class="tl-meta">🕗 <b>19:30</b></span>
+            <span class="tl-meta">📍 <b>Igreja do Cristo Rei</b></span>
+        </div>
+        <div class="tl-actions">
+          <a class="btn-text" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Igreja%20do%20Cristo%20Rei%2C%20Teresina%2C%20PI">Ver Localização no Mapa</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item reveal">
+      <div class="tl-badge">23</div>
+      <div class="tl-content">
+        <span class="tl-date">Quinta-feira</span>
+        <h3>Descerramento da Placa & Assinatura</h3>
+        <div class="tl-meta-wrap">
+            <span class="tl-meta">🕒 <b>15:00</b> — Descerramento</span>
+            <span class="tl-meta">🖋️ <b>18:00</b> — Assinatura</span>
+            <span class="tl-meta">📍 <b>Uninovafapi</b></span>
+        </div>
+        <div class="tl-actions">
+          <a class="btn-text" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Uninovafapi%2C%20Teresina%2C%20PI">Ver Localização no Mapa</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="tl-item reveal">
+      <div class="tl-badge">24</div>
+      <div class="tl-content">
+        <span class="tl-date">Sexta-feira</span>
+        <h3>Aula da Saudade</h3>
+        <div class="tl-meta-wrap">
+            <span class="tl-meta">🕙 <b>22:00</b></span>
+            <span class="tl-meta">📍 <b>Sunset 86</b></span>
+        </div>
+        <div class="tl-actions">
+          <a class="btn-text" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Sunset%2086%2C%20Teresina%2C%20PI">Ver Localização no Mapa</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="arc-divider reveal" aria-hidden="true">
+  <svg viewBox="0 0 200 40"><path d="M6,8 Q100,36 194,8" fill="none" stroke="#c8a44c" stroke-width="1" opacity="0.5"/></svg>
+</div>
+
+<section class="section dedic-section" id="dedicatoria">
+  <div class="section-head reveal" style="margin-bottom: 40px;">
+    <h2 class="font-script" style="font-size: 64px; text-transform: none; letter-spacing: 0;">Dedicatória</h2>
+  </div>
+
+  <div class="dedic-photo reveal">
+    <img src="WhatsApp%20Image%202026-06-20%20at%2012.42.40_2.jpeg" alt="Augusto com foto da família no tablet">
+  </div>
+
+  <div class="dedic-text reveal">
+    <p>Nesta jornada tão especial, quero agradecer minha formatura à minha família. Em especial meu avô <b>Luís</b> e minha avó <b>Soledade</b>, vocês foram minha base, meu porto seguro e minha maior inspiração.</p>
+    <p>Minha esposa <b>Viviane Gomes</b> por todo apoio, motivação e carinho ao longo desses 5 anos sem você eu jamais conseguiria devo tudo a você meu amor.</p>
+    <p>Meu filho <b>Nicolas Augusto</b> obrigado por ser minha maior motivação, desde que você nasceu o meu pensamento é apenas te dar orgulho meu filho amado.</p>
+    <p>Minha mãe <b>Celi Machado</b> por sempre se fazer presente me dando uma verdadeira rede de apoio. Minha tia <b>Olive Machado</b> por toda rede de apoio a senhora facilitou muito minha jornada obrigado minha tia.</p>
+    <p>Ao tio <b>Machado</b> e o tio <b>Braz</b> por todo apoio e carinho assim estendo esse carinho a todos os outros tios. Obrigada por acreditarem em mim e por tudo o que fizeram por mim. Eu amo vocês mais do que as palavras podem dizer.</p>
+    
+    <div class="dedic-sign font-script">Augusto Machado</div>
+  </div>
+</section>
+
+<div class="arc-divider reveal" aria-hidden="true">
+  <svg viewBox="0 0 200 40"><path d="M6,8 Q100,36 194,8" fill="none" stroke="#c8a44c" stroke-width="1" opacity="0.5"/></svg>
+</div>
+
+<section class="section" id="presenca" style="padding-bottom: 0;">
+  <div class="rsvp-container reveal">
+    <h2 class="font-script" style="font-size: 52px; color: var(--gold-light); margin-bottom: 16px;">Sua Presença</h2>
+    <p class="rsvp-text">
+      Este momento só estará completo com a presença das pessoas que fizeram parte da minha história. Por favor, confirme sua presença diretamente no meu WhatsApp.
+    </p>
+    
+    <a href="https://wa.me/558694738908?text=Ol%C3%A1%20Dr.%20Augusto!%20Recebi%20seu%20convite%20e%20gostaria%20de%20confirmar%20minha%20presen%C3%A7a%20nas%20solenidades%20de%20sua%20formatura.%20Muito%20orgulho%20dessa%20conquista!%20%F0%9F%8E%93%F0%9F%92%9B" target="_blank" rel="noopener noreferrer" class="btn-whatsapp-large">
+      <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+        <path d="M12 2C6.48 2 2 6.04 2 11c0 2.4 1.06 4.57 2.8 6.17L4 22l5.06-1.62C10.02 20.79 11 21 12 21c5.52 0 10-4.04 10-9S17.52 2 12 2z"/>
+      </svg>
+      Confirmar Presença
+    </a>
+  </div>
+</section>
+
+<!-- Foto de Fechamento Fluida (Máscara de Gradiente) -->
+<div class="final-image reveal"></div>
+
+<footer>
+  Augusto Machado <span class="heart">🎓</span> 2026
+</footer>
+
+<script>
+  // Animações de entrada ao rolar a página
+  const reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 }); // Começa a animar um pouco antes
+    reveals.forEach(el => obs.observe(el));
+  } else {
+    reveals.forEach(el => el.classList.add('is-visible'));
+  }
+</script>
+
+</body>
+</html>
+```
+
+©2026 Todos os direitos reservados AUGUSTO MACHADO
