@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convite Augusto Machado</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inria+Serif:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --bordô: #3f0c1a; --dourado: #c8a44c; }
+        body { margin: 0; background-color: var(--bordô); color: white; font-family: 'Inria Serif', serif; overflow-x: hidden; }
+        
+        /* Fundo com Sorriso sutil */
+        .hero { 
+            height: 100vh; position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center;
+            background: linear-gradient(rgba(63, 12, 26, 0.85), rgba(63, 12, 26, 0.85)), url('image_8e0da0.png');
+            background-size: cover; background-position: center;
+        }
+
+        /* Dentes vazados animados */
+        .tooth-float { position: absolute; width: 40px; opacity: 0.15; animation: float 10s infinite; pointer-events: none; }
+        @keyframes float { 0% { transform: translateY(100vh) rotate(0deg); } 100% { transform: translateY(-10vh) rotate(360deg); } }
+
+        h2 { font-family: 'Inria Serif'; letter-spacing: 3px; font-weight: 400; text-transform: uppercase; }
+        h1 { font-family: 'Great Vibes'; font-size: 4rem; color: var(--dourado); }
+        .frame { border: 2px solid var(--dourado); padding: 10px; border-radius: 10px; width: 80%; max-width: 300px; }
+        img { width: 100%; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <div class="tooth-float" style="left: 10%; animation-delay: 0s;">🦷</div>
+        <div class="tooth-float" style="left: 70%; animation-delay: 3s;">🦷</div>
+        
+        <h2>Convite de Formatura</h2>
+        <div class="frame">
+            <img src="WhatsApp Image 2026-06-20 at 12.42.40 (1).jpeg" alt="Dr Augusto">
+        </div>
+        <h1>Augusto Machado</h1>
+        <p>CIRURGIÃO-DENTISTA</p>
+    </section>
+</body>
+</html>
